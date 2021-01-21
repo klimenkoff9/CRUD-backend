@@ -1,7 +1,9 @@
 // Here, we can prepare to register our models, set up associations between tables, and generate a barrel file for the models;
 
-const Player = require('./player');
+const Student = require('./student');
+const College = require('./college');
 
 module.exports = {
-  Player
+  Student, 
+  College
 };

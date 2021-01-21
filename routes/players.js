@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Player } = require('../database/models');
+const { Player } = require('../database/models'); // imports the models from database
 
 router.get('/', function(req, res, next) {
   Player.findAll()
