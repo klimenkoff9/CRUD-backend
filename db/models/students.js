@@ -30,18 +30,16 @@ const Student = db.define("student", {
         type: Sequelize.STRING,
         allowNull: false,
         validate : {
+            isEmail: true,
             notEmpty: true
         }
     },
     imageUrl : {
         type: Sequelize.TEXT,
-        allowNull: false,
-        validate : {
-            notEmpty: true
-        }
+        defaultValue : "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133352088-stock-illustration-default-placeholder-profile-icon.jpg"
     },
     gpa : {
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
         allowNull: false,
         validate : {
             notEmpty: true
