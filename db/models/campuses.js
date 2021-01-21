@@ -22,11 +22,7 @@ const Campus = db.define("campus", {
         }
     },
     imageUrl : {
-        type: Sequelize.TEXT,
-        allowNull: false,
-        validate : {
-            notEmpty: true
-        }
+        type: Sequelize.TEXT
     },
     address : {
         type: Sequelize.STRING,
@@ -36,11 +32,7 @@ const Campus = db.define("campus", {
         }
     },
     description : {
-        type: Sequelize.TEXT,
-        allowNull: false,
-        validate : {
-            notEmpty: true
-        }
+        type: Sequelize.TEXT
     }
 });
 
