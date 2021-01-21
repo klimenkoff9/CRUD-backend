@@ -39,10 +39,12 @@ const Student = db.define("student", {
         defaultValue : "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133352088-stock-illustration-default-placeholder-profile-icon.jpg"
     },
     gpa : {
-        type: Sequelize.FLOAT,
+        type: Sequelize.FLOAT(),
         allowNull: false,
         validate : {
-            notEmpty: true
+            notEmpty: true,
+            min: 0,
+            max: 4.0
         }
     }
 });
