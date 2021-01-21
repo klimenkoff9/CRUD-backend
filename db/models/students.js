@@ -41,7 +41,7 @@ const Student = db.define("student", {
         }
     },
     gpa : {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         validate : {
             notEmpty: true
@@ -49,4 +49,4 @@ const Student = db.define("student", {
     }
 });
 
-module.exports = student;
+module.exports = Student;
