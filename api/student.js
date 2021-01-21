@@ -19,7 +19,13 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
 	console.log("req.query.id", req.query.id);
 	try {
-		const student = await Student.findByPk(req.params.id);
+        const student = await Student.findByPk(req.params.id);
+        if (!student){
+            res.status(404)
+            .json({
+                message : `Student Not Found`
+            })
+        }
 		res.json({
 			message: `you are pulling data from students with id ${student.id} and college id ${student.campusID}`,
 			student,
@@ -40,24 +46,5 @@ router.post("/", async (req, res, next) => {
 		next(error);
 	}
 });
-
-/* router.put("/", async (req, res, next) => {
-	console.log("req.params.id", req.body.id);
-	try {
-		let student = await Student.findByPk(req.body.id);
-		student.update({
-			firstName: req.body.firstName,
-			lastName: req.body.lastName,
-			email: req.body.email,
-			imageUrl: req.body.imageUrl,
-			gpa: req.body.gpa,
-			campusId: req.body.campusId
-        });
-        res.send(student).json(student);
-	} catch (error) {
-		res.status(500).json({ message: "An error occured" });
-		next(error);
-	}
-}); */
 
 module.exports = router;
