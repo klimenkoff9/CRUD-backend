@@ -6,7 +6,7 @@ require('dotenv').config(); // requries dotenv
 ); */
 // for process.env.DATABASE_PASS either out password here it make an .env file and place password there/
 
-const db = new Sequelize("campusdb", "postgres", process.env.DATABASE_PASS, {
+const db = new Sequelize(process.env.DATABASE_NAME, process.env.DATABASE_USER , process.env.DATABASE_PASS, {
     host : "localhost",
     dialect: "postgres"
 })

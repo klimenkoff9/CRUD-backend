@@ -15,9 +15,10 @@ router.get("/", async (req, res, next)=>{
     }
 })
 //get specific campus with students path api/campus/:id
-router.get("/:id", async(req, res, next)=>{
+router.get("/:CampusName", async(req, res, next)=>{
     try{
-        const campus = await Campus.findAll({include: Student, where: { id: req.params.id}});
+        const campus = await Campus.findAll({include: Student, where: { name: req.params.CampusName}});
+        console.log(campus);
         res.status(200).json(campus);
     }
     catch(error){
@@ -28,7 +29,7 @@ router.get("/:id", async(req, res, next)=>{
     }
 })
 //post a campus  path api/campus/campus
-router.post("/campus", async (req, res, next)=>{
+router.post("/", async (req, res, next)=>{
     try{
         const campus = await Campus.create(req.body);
         res.status(200).json(campus);

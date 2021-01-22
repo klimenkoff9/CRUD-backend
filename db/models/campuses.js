@@ -9,7 +9,7 @@ const Sequelize = require("sequelize");
 
 const db = require("../db");
 
-const Campus = db.define("campuses", {
+const Campus = db.define("campus", {
 	name: {
 		type: Sequelize.STRING,
 		allowNull: false,
@@ -19,7 +19,7 @@ const Campus = db.define("campuses", {
 	},
 	imageUrl: {
 		type: Sequelize.TEXT,
-		defaultValue: "https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133352088-stock-illustration-default-placeholder-profile-icon.jpg",
+		defaultValue: "https://www.brooklyn.cuny.edu/web/com_homepage_2020/BrooklynCollegeLibrary_220x140.jpg",
 	},
 	address: {
 		type: Sequelize.STRING,
