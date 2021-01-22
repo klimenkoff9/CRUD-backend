@@ -14,7 +14,7 @@ router.get("/", async (req, res, next)=>{
         next(error);
     }
 })
-//get specific campus with students path api/campus/:id
+//get specific campus with students path api/campus/:CampusNmae
 router.get("/:CampusName", async(req, res, next)=>{
     try{
         const campus = await Campus.findAll({include: Student, where: { name: req.params.CampusName}});
