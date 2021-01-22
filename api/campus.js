@@ -28,7 +28,7 @@ router.get("/:id", async(req, res, next)=>{
     }
 })
 //post a campus  path api/campus/campus
-router.post("/campus", async (req, res, next)=>{
+router.post("/", async (req, res, next)=>{
     try{
         const campus = await Campus.create(req.body);
         res.status(200).json(campus);
