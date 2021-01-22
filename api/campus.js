@@ -40,6 +40,7 @@ router.post("/", async (req, res, next) => {
 	}
 });
 
+// update campus info path api/campus/:id
 router.put("/:id", async (req, res, next) => {
 	try {
 		let campus = await Campus.findByPk(req.params.id);
