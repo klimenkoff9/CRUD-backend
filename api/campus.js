@@ -13,6 +13,7 @@ router.get("/", async (req, res, next) => {
 		next(error);
 	}
 });
+
 //get specific campus with students path api/campus/:id
 router.get("/:id", async (req, res, next) => {
 	try {
