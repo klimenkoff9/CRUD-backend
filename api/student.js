@@ -7,8 +7,7 @@ router.get("/", async (req, res, next) => {
 	try {
 		const allStudents = await Student.findAll();
 		res.json({
-			message: "you are pulling data from students database",
-			allStudents,
+			allStudents
 		});
 	} catch (error) {
 		res.status(500).json({ message: "An error occured" });
@@ -27,8 +26,7 @@ router.get("/:id", async (req, res, next) => {
             })
         }
 		res.json({
-			message: `you are pulling data from students with id ${student.id} and college id ${student.campusID}`,
-			student,
+			student
 		});
 	} catch (error) {
 		res.status(500).json({ message: "An error occured" });
