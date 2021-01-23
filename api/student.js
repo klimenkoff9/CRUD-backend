@@ -69,5 +69,17 @@ router.put("/:id", async (req, res, next) => {
 		next(error);
 	}
 });
-
+// (localhost:8080)/api/student/:id
+router.delete("/:id", async (req, res, next) => {
+	try {
+        const student = await Student.findByPk(req.params.id);
+        if (!student) res.status(404).json({ message: "Student does not exist" });
+        student.destroy();
+		res.status(200).json(student);
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: "unable to delete student" });
+		next(error);
+	}
+})
 module.exports = router;
