@@ -23,7 +23,6 @@ const Campus = db.define("campus", {
 	},
 	address: {
 		type: Sequelize.STRING,
-		allowNull: false,
 		validate: {
 			notEmpty: true,
 		},

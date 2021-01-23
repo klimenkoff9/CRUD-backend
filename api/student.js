@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const { Student } = require("../db/models");
+const { Campus, Student } = require("../db/models");
 
 // (localhost:8080)/api/student/
 router.get("/", async (req, res, next) => {
 	console.log("req.query" + req.query);
 	try {
-		const allStudents = await Student.findAll();
+		const allStudents = await Student.findAll({include: Campus});
 		res.json({
 			allStudents
 		});
