@@ -1,14 +1,13 @@
 const router = require("express").Router();
-const { Student } = require("../db/models");
+const { Campus, Student } = require("../db/models");
 
 // (localhost:8080)/api/student/
 router.get("/", async (req, res, next) => {
 	console.log("req.query" + req.query);
 	try {
-		const allStudents = await Student.findAll();
+		const allStudents = await Student.findAll({include: Campus});
 		res.json({
-			message: "you are pulling data from students database",
-			allStudents,
+			allStudents
 		});
 	} catch (error) {
 		res.status(500).json({ message: "An error occured" });
@@ -27,8 +26,7 @@ router.get("/:id", async (req, res, next) => {
             })
         }
 		res.json({
-			message: `you are pulling data from students with id ${student.id} and college id ${student.campusID}`,
-			student,
+			student
 		});
 	} catch (error) {
 		res.status(500).json({ message: "An error occured" });

@@ -5,7 +5,7 @@ const { Campus, Student } = require("../db/models");
 //get all campuses path api/campus
 router.get("/", async (req, res, next) => {
 	try {
-		const table = await Campus.findAll();
+		const table = await Campus.findAll({include : Student});
 		res.status(200).json(table);
 	} catch (error) {
 		console.error(error);
@@ -13,12 +13,12 @@ router.get("/", async (req, res, next) => {
 		next(error);
 	}
 });
-//get specific campus with students path api/campus/:CampusNmae
-router.get("/:CampusName", async (req, res, next) => {
+//get specific campus with students path api/campus/:id
+router.get("/:id", async (req, res, next) => {
 	try {
 		const campus = await Campus.findAll({
 			include: Student,
-			where: { name: req.params.CampusName },
+			where: { id: req.params.id },
 		});
 		console.log(campus);
 		res.status(200).json(campus);
