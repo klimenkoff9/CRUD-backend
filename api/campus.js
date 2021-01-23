@@ -64,4 +64,18 @@ router.put("/:id", async (req, res, next) => {
 	}
 });
 
+router.get("/:id/delete", async (req, res, next) => {
+	try {
+        const campus = await Campus.findByPk(req.params.id);
+        if (!campus) res.status(404).json({ message: "Campus does not exist" });
+        campus.destroy();
+		res.status(200).json(campus);
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: "unable to post campus" });
+		next(error);
+	}
+});
+
+
 module.exports = router;
