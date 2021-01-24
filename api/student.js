@@ -6,9 +6,7 @@ router.get("/", async (req, res, next) => {
 	console.log("req.query" + req.query);
 	try {
 		const allStudents = await Student.findAll({include: Campus});
-		res.json({
-			allStudents
-		});
+		res.status(200).json(allStudents);
 	} catch (error) {
 		res.status(500).json({ message: "An error occured" });
 		next(error);
@@ -25,11 +23,25 @@ router.get("/:id", async (req, res, next) => {
                 message : `Student Not Found`
             })
         }
-		res.json({
+		res.status(200).json({
 			student
 		});
 	} catch (error) {
 		res.status(500).json({ message: "An error occured" });
+		next(error);
+	}
+});
+// localhost:8080/api/student/campus/:id
+router.get("/campus/:id", async (req, res, next) => {
+	try {
+		const studentsByCampus = await Student.findAll({
+			where: { campusId: req.params.id },
+		});
+		console.log(studentsByCampus);
+		res.status(200).json(studentsByCampus);
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: "error finding table" });
 		next(error);
 	}
 });
