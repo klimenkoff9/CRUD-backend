@@ -81,8 +81,8 @@ router.put("/:id", async (req, res, next) => {
 		next(error);
 	}
 });
-// (localhost:8080)/api/student/:id
-router.delete("/:id", async (req, res, next) => {
+// (localhost:8080)/api/student/:id/delete
+router.delete("/:id/delete", async (req, res, next) => {
 	try {
         const student = await Student.findByPk(req.params.id);
         if (!student) res.status(404).json({ message: "Student does not exist" });
