@@ -21,7 +21,20 @@ router.get("/:id", async (req, res, next) => {
 			include: Student,
 			where: { id: req.params.id },
 		});
-		console.log(campus[0]);
+		console.log(campus);
+		res.status(200).json(campus);
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: "error finding table" });
+		next(error);
+	}
+});
+
+//get specific campus with students path api/campus/nostudent/:id
+router.get("/nostudent/:id", async (req, res, next) => {
+	try {
+		const campus = await Campus.findByPk(req.params.id);
+		console.log(campus);
 		res.status(200).json(campus);
 	} catch (error) {
 		console.error(error);
@@ -32,6 +45,7 @@ router.get("/:id", async (req, res, next) => {
 //post a campus  path api/campus/campus
 router.post("/", async (req, res, next) => {
 	try {
+        console.log(req.body);
 		const campus = await Campus.create(req.body);
 		res.status(200).json(campus);
 	} catch (error) {
