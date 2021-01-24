@@ -21,7 +21,7 @@ router.get("/:id", async (req, res, next) => {
 			include: Student,
 			where: { id: req.params.id },
 		});
-		console.log(campus);
+		console.log(campus[0]);
 		res.status(200).json(campus);
 	} catch (error) {
 		console.error(error);
