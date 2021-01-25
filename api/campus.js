@@ -78,7 +78,7 @@ router.put("/:id", async (req, res, next) => {
 		next(error);
 	}
 });
-
+// delete campus path api/campus/:id/delete
 router.get("/:id/delete", async (req, res, next) => {
 	try {
         const campus = await Campus.findByPk(req.params.id);
